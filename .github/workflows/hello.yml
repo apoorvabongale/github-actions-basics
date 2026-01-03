@@ -27,4 +27,14 @@ jobs:
 
       - name: Run tests
         run: python -m pytest
+deploy-prod:
+    name: CD - Deploy to Production
+    needs: ci
+    runs-on: ubuntu-latest
+    environment: production
 
+    steps:
+      - name: Deploy application
+        run: |
+          echo "Deploying application to PRODUCTION"
+          python app.py
