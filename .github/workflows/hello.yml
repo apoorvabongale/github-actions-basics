@@ -1,11 +1,24 @@
-name: Hello GitHub Actions
+name: Python CI Pipeline
 
 on:
   push:
+  pull_request:
 
 jobs:
-  say-hello:
+  build-and-test:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Print greeting
-        run: echo "Hello! My first GitHub Action is running."
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Run Python app
+        run: python app.py
+
+      - name: Run tests
+        run: python -m pytest
