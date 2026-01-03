@@ -27,7 +27,7 @@ jobs:
 
       - name: Run tests
         run: python -m pytest
-  deploy-prod:
+    deploy-prod:
     name: CD - Deploy to Production
     needs: ci
     runs-on: ubuntu-latest
